@@ -18,3 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 ## Application Print
 
 ![Description of the image](./image_app.png)
+![Description of the image](./image_app_2.png)
+![Description of the image](./image_app_3.png)
+![Description of the image](./image_app_4.png)
