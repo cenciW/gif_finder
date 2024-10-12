@@ -44,3 +44,6 @@ app.*.map.json
 
 #ignore api_key.dart
 lib/ui/api_key.dart
+
+#ignore mock .json
+mock.json
