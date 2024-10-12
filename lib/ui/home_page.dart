@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gif_finder/ui/gif_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:share/share.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import './api_key.dart';
 
@@ -124,9 +126,11 @@ class _HomePageState extends State<HomePage> {
         if (_search.isEmpty || index < snapshot.data["data"].length) {
           return GestureDetector(
             //data.
-            child: Image.network(
-              snapshot.data["data"][index]["images"]["fixed_height"]["url"],
-              height: 300.0,
+            child: FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: snapshot.data["data"][index]["images"]["fixed_height"]
+                  ["url"],
+              height: 300,
               fit: BoxFit.cover,
             ),
             onTap: () {
@@ -135,6 +139,10 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(
                       builder: (context) =>
                           GifPage(snapshot.data["data"][index])));
+            },
+            onLongPress: () {
+              Share.share(snapshot.data["data"][index]["images"]["fixed_height"]
+                  ["url"]);
             },
           );
         } else {
